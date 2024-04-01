@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance Calculator</title>
+    <link rel="stylesheet" href="/Asserts/Css/bootstrap.min.css">
+
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row justify-content-center" >
+        <div class="col-6 bg-dark border border rounded mt-5 py-4" id="const">
+        <div class="row">
+            <div class="col-12">
+            <input type="text" class="form-control py-4 border  border-secondary border-3 form-input" placeholder="0" id="result"></div>
+        </div>
+        <div>
+        <div class="row justify-content-center pt-3 px-1">
+            <button onclick="calculate('+')" class="btn btn-secondary col-2 p-2 border  border-0 me-2 ">+</button>
+            <button onclick="calculate('-')" class="col-2 p-2   btn btn-secondary  border  border-0 me-2">-</button>
+            <button onclick="calculate('*')" class="col-2 p-2   btn btn-secondary  border  border-0 me-2">*</button>
+            <button onclick="calculate('/')" class="col-2 p-2   btn btn-secondary  border  border-0 me-2">/</button>
+        </div>
+        <div class="row justify-content-center pt-2 px-1">
+            <button onclick="calculate('1')" class="col-2  p-2  btn btn-secondary  border  border-0 me-2">1</button>
+            <button onclick="calculate('2')" class="col-2  p-2  btn btn-secondary  border  border-0 me-2">2</button>
+            <button onclick="calculate('3')" class="col-2  p-2  btn btn-secondary  border  border-0 me-2">3</button>
+            <button onclick="calculate('4')" class="col-2   btn btn-secondary  border  border-0 me-2">4</button>
+        </div>
+        <div class="row justify-content-center pt-2 px-1">
+            <button onclick="calculate('5')" class="col-2  p-2  btn btn-secondary  border  border-0 me-2">5</button>
+            <button onclick="calculate('6')" class="col-2  p-2  btn btn-secondary  border  border-0 me-2">6</button>
+            <button onclick="calculate('7')" class="col-2  p-2  btn btn-secondary  border  border-0 me-2">7</button>
+            <button onclick="calculate('8')" class="col-2 p-2  btn btn-secondary  border  border-0 me-2">8</button>
+        </div>
+        <div class="row justify-content-center pt-2 px-1">
+            <button onclick="calculate('9')" class="col-2  p-2 btn btn-secondary  border  border-0 me-2">9</button>
+            <button onclick="calculate('0')" class="col-2  p-2  btn btn-secondary  border  border-0 me-2">0</button>
+            <button onclick="calculate('=')" class="col-2  p-2  btn btn-secondary  border  border-0 me-2">=</button>
+            <button onclick="calculate('c')" class="col-2 p-2  btn btn-secondary  border  border-0 me-2">AC</button>
+        </div>
+        <div class="row justify-content-center pt-2 px-1">
+            <button onclick="calculate('.')" class="col-2  p-2 btn btn-secondary  border  border-0 me-2 ">.</button>
+            <button onclick="calculate('%')" class="col-2  p-2  btn btn-secondary  border  border-0 me-2">%</button>
+            <button onclick="backspace()" class="col-2  p-2  btn btn-secondary  border  border-0 me-2"><-</button>
+            <button onclick="mod()" id="butt" class="mode col-2 p-2  btn btn-secondary  border border-0 me-2">M</button>
+        </div>
+        
+    </div>
+    </div>
+    </div>
+</div>
+
+<script>
+    const result=document.getElementById('result')
+    const but=document.getElementById('butt')
+    const cont=document.getElementById('const');
+    
+    function calculate(val){
+        if(result.value==Infinity ){
+                result.value='';    
+            }
+        if(val!='='){
+            result.value=result.value+val;
+        }
+        if(val=='c'){
+        result.value='';
+        }
+        if(val=='='){
+
+            result.value=(result.value=='')?0:eval(result.value)  
+        }
+        if(result.value=='0'){
+            result.value='';
+        }
+        
+    }
+    function backspace(){
+            let temp=result.value
+            result.value=temp.substring(0,temp.length-1)
+        }
+
+
+    let MODE='dark';
+    function mod(){
+       
+        const btns=document.getElementsByTagName('button');
+        if(MODE=='dark'){
+            cont.classList.replace('bg-dark','bg-secondary');
+            for (let btn of btns){
+                btn.classList.replace('btn-secondary','btn-light');
+            };
+            MODE='light'
+        }
+        else{
+            cont.classList.replace('bg-secondary','bg-dark');
+            for (let btn of btns){
+                btn.classList.replace('btn-light','btn-secondary');
+            };
+            MODE='dark';
+        }
+    }
+    
+</script>
+
+</body>
+</html>
